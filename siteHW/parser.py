@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
-driver = Service('D:\\teach\Prog\chromedriver.exe')
+driver = Service('D:\Downloads\chromedriver_win32\chromedriver.exe')
 browser = webdriver.Chrome(service=driver)
 browser.get(
     'https://amwine.ru/catalog/igristoe_vino_i_shampanskoe/igristoe_vino/')

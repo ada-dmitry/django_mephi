@@ -2,7 +2,7 @@ import psycopg2
 import config
 
 
-def sel(cursor, tabl):
+def sel():
     connection = psycopg2.connect(
         host=config.hostname, dbname=config.databname, user=config.username, password=config.passw)
     cursor = connection.cursor()
@@ -16,11 +16,12 @@ def sel(cursor, tabl):
     finally:
         array = list(cursor.fetchall())
     d = ''
+    j = 0
     for i in array:
         d += f'''<div class="col-md-6 col-lg-4">
                 <div class="card text-center card-product">
                   <div class="card-product__img">
-                    <img class="card-img" src="static/image/{i}.jpg" alt="">
+                    <img class="card-img" src="/static/image/{j}.jpg" width="300" height="600" alt="">
                     <ul class="card-product__imgOverlay">
                       <li><button><i class="ti-search"></i></button></li>
                       <li><button><i class="ti-shopping-cart"></i></button></li>
@@ -28,18 +29,13 @@ def sel(cursor, tabl):
                     </ul>
                   </div>
                   <div class="card-body">
-                    <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="#">Quartz Belt Watch</a></h4>
-                    <p class="card-product__price">$150.00</p>
+                    <p>Mark: {i[4]}</p>
+                    <h4 class="card-product__title"><a href="#">{i[1]}</a></h4>
+                    <p class="card-product__price">{i[2]}</p>
                   </div>
                 </div>
               </div>'''
-    return array
-
-
-def upd(conn, cursor, tabl):
-    import parser
-    for i in range(15):
-        up_query = f"""UPDATE {tabl} SET page_name = '{parser.name[i].text}', price = '{parser.price[i].text}', priceDis = '{parser.priceDis[i].text}', mark = '{parser.mark[i].text}' WHERE id = {i+1}"""
-        cursor.execute(up_query)
-        conn.commit()
+        j += 1
+    cursor.close()
+    connection.close()
+    return d
