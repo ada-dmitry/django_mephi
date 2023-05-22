@@ -20,7 +20,7 @@ except psycopg2.errors.DuplicateTable:
 for i in range(15):
     url = 'https://amwine.ru' + \
           parser.pictures[i].find('a').find('img').attrs['data-src']
-    filename = f"C:/Users/adadm/PycharmProjects/django_mephi/siteHW/polls/static/image/{i}.jpg"
+    filename = f"siteHW/polls/static/polls/image/{i}.jpg"
     try:
         img = open(filename)
     except IOError as e:

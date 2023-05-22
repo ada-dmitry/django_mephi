@@ -18,23 +18,17 @@ def sel():
     d = ''
     j = 0
     for i in array:
-        d += f'''<div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                    <img class="card-img" src="/static/image/{j}.jpg" width="300" height="600" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <p>Mark: {i[4]}</p>
-                    <h4 class="card-product__title"><a href="#">{i[1]}</a></h4>
-                    <p class="card-product__price">{i[2]}</p>
-                  </div>
-                </div>
-              </div>'''
+        d += f'''<li>
+							<a><img width="135" height="500" src="siteHW/polls/static/polls/image/{j}.jpg"/></a>
+							<div class="product-info">
+								<h3>{i[1]}</h3>
+								<div class="product-desc">
+									<h4>{i[2]}</h4>
+									<p>Mark: {i[4]}<br /></p>
+									<strong class="price">{i[3]}</strong>
+								</div>
+							</div>
+						</li>'''
         j += 1
     cursor.close()
     connection.close()
