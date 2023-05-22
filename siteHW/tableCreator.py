@@ -17,7 +17,7 @@ except psycopg2.errors.DuplicateTable:
     print("")
 
 
-for i in range(15):
+for i in range(20):
     url = 'https://amwine.ru' + \
           parser.pictures[i].find('a').find('img').attrs['data-src']
     filename = f"siteHW/polls/static/polls/image/{i}.jpg"

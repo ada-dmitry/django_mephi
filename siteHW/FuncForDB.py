@@ -16,20 +16,18 @@ def sel():
     finally:
         array = list(cursor.fetchall())
     d = ''
-    j = 0
-    for i in array:
+    for i in range(20):
         d += f'''<li>
-							<a><img width="135" height="500" src="siteHW/polls/static/polls/image/{j}.jpg"/></a>
+							<a><img width="270" height="1000" src="/siteHW/polls/static/polls/image/{i}.jpg"></a>
 							<div class="product-info">
-								<h3>{i[1]}</h3>
+								<h3>{array[i][1]}</h3>
 								<div class="product-desc">
-									<h4>{i[2]}</h4>
-									<p>Mark: {i[4]}<br /></p>
-									<strong class="price">{i[3]}</strong>
+									<h4>{array[i][2]}</h4>
+									<p>Mark: {array[i][4]}<br /></p>
+									<strong class="price">{array[i][3]}</strong>
 								</div>
 							</div>
 						</li>'''
-        j += 1
     cursor.close()
     connection.close()
     return d
