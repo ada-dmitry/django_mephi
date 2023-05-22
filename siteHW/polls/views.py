@@ -7,6 +7,9 @@ def index(request):
 
 
 
+# def index(request):
+#     a = sel()
+#     return render(request, 'polls/index.html', {'data': a})
+
 def index(request):
-    a = sel()
-    return render(request, 'polls/index.html', {'data': a})
+    return render(request, 'polls/index.html')
